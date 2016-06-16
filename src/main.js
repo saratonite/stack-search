@@ -17,6 +17,11 @@ var router = new VueRouter();
 router.map({
     '/': {
         component: Home
+    },
+    '/question/:id':{
+      component:{
+        template:'<p>Question</p>'
+      }
     }
 })
 
