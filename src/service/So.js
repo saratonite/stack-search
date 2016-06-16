@@ -11,8 +11,7 @@ export default {
 
     search:function(searchParams){
       return request.get(API_END+'search/advanced').query({key:API_KEY})
-      .query({q:searchParams.q})
-      .query({ site: 'stackoverflow', order: 'desc',sort:'activity',filter:'default'});
+      .query(searchParams)
 
     }
 

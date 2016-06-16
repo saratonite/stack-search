@@ -9,6 +9,7 @@ var BaseCss = require('spectre.css');
 /* Import custom components */
 
 import Home from './pages/Home'
+import NotFound from './pages/404'
 
 
 Vue.use(VueRouter)
@@ -18,10 +19,10 @@ router.map({
     '/': {
         component: Home
     },
-    '/question/:id':{
-      component:{
-        template:'<p>Question</p>'
-      }
+    '*':{
+
+      component:NotFound
+
     }
 })
 

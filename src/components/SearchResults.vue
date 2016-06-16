@@ -1,6 +1,7 @@
 <template>
   <h3>Search Results</h3>
-  <div v-for="item in items">
+  <div v-show="loading" class="loading"></div>
+  <div v-shoe="!loading" v-for="item in items">
       <p>
           <div class="container">
             <div class="columns">
@@ -34,7 +35,7 @@ import Tags from './Tags';
 
 export default {
 
-  props:['items'],
+  props:['items','loading'],
   components:{
     Tags
   }
