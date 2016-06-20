@@ -1,7 +1,7 @@
 <template>
   <h3>Search Results</h3>
   <div v-show="loading" class="loading"></div>
-  <div v-shoe="!loading" v-for="item in items">
+  <div v-show="!loading" v-for="item in items">
       <p>
           <div class="container">
             <div class="columns">
