@@ -44,9 +44,9 @@ import SearchResults from  './../components/SearchResults';
           closed:"False",
           sortBy:'activity',
           q:'',
-          loading:false,
           site: 'stackoverflow'
-        }
+        },
+        loading:false
       }
     },
     events:{

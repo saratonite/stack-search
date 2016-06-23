@@ -6,10 +6,10 @@
               <div class="column col-5 ">
                 <input type="text" class="form-input" name="q" v-model="searchData.q">
                 <label class="form-switch">
-                  <input type="checkbox" v-model="searchData.closed" />
+                  <input type="checkbox"  @change="doSearch" v-model="searchData.closed" />
                   <i class="form-icon"></i> Show only closed threds
               </label>
-              <select class="form-select" v-model="searchData.sortBy">
+              <select class="form-select" v-model="searchData.sortBy" @change="doSearch">
                 <option value="activity" disabled selected>Sort by</option>
                 <option value="activity">Activity</option>
                 <option value="votes">Votes</option>
@@ -40,7 +40,6 @@ export default {
 			closed:"False",
         	sortBy:'activity',
         	q:'',
-        	loading:false,
         	site: 'stackoverflow'
 			}
 		}
