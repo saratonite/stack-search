@@ -3,38 +3,8 @@
 
     <h1 >StackOverFlow Search</h1>
     <div class="container ">
-      <form v-on:submit="doSearch">
-        <div class="search-launch centered">
-
-          <div class="columns col-gapless ">
-              <div class="column col-5 ">
-                <input type="text" class="form-input" name="q" v-model="q">
-                <label class="form-switch">
-                  <input type="checkbox" v-model="closed" />
-                  <i class="form-icon"></i> Show only closed threds
-              </label>
-              <select class="form-select" v-model="sortBy">
-                <option value="activity" disabled selected>Sort by</option>
-                <option value="activity">Activity</option>
-                <option value="votes">Votes</option>
-                <option value="creation">Creation</option>
-                <option value="relevance">Relevance</option>
-            </select>
-              </div>
-              <div class="column col-2">
-                &nbsp;
-                <button class="btn btn-primary" @click.enter="doSearch">Search</button>
-
-
-              </div>
-
-          </div>
-
-        </div>
-
-      </form>
-
-
+        <!-- SearchBox -->
+        <Search-box ></Search-box>
 
         <Search-results  :loading="loading" :items="searchData"></Search-results>
 
@@ -55,39 +25,54 @@
 <script>
 
 import Api from './../service/So';
+import SearchBox from './../components/SearchBox';
 import SearchResults from  './../components/SearchResults';
 
 	export default {
     created(){
-      this.doSearch();
+
+
+
     },
 		ready(){
+      this.doSearch();
 		},
     data:function(){
       return {
         searchData:{},
-        closed:"False",
-        sortBy:'activity',
-        q:'',
-        loading:false
+        searchParams:{
+          closed:"False",
+          sortBy:'activity',
+          q:'',
+          loading:false,
+          site: 'stackoverflow'
+        }
+      }
+    },
+    events:{
+      'do-search':function(data){
+        this.doSearch(data);
       }
     },
     // Methods
     methods:{
 
-      doSearch:function(e){
+      doSearch:function(data){
+        var searchParams = data;
         this.loading = true;
 
         var self = this;
-        var searchParams = { q:self.q,site: 'stackoverflow', order: 'desc',sort:self.sortBy,filter:'default',closed:self.closed};
+        //var searchParams = { q:self.q,site: 'stackoverflow', order: 'desc',sort:self.sortBy,filter:'default',closed:self.closed};
+
+        if(typeof(searchParams) === "undefined"){
+          searchParams = {q:self.searchParams.q,closed:self.searchParams.closed,sortBy:self.searchParams.sortBy,site: 'stackoverflow'};
+        }
+        
         Api.search(searchParams).end(function(err,res){
           self.loading =false;
-          console.log(err);
-          console.log(res);
           if(res.status == 200)
           {
             self.searchData = res.body.items;
-            console.log(self.searchData);
           }
         });
         if(typeof(e) != "undefined"){
@@ -99,7 +84,8 @@ import SearchResults from  './../components/SearchResults';
 
     },
     components:{
-      SearchResults
+      SearchResults,
+      SearchBox
     }
 	}
 </script>
