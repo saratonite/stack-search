@@ -14,7 +14,7 @@
 
                 </div>
                 <div class="column col-8">
-                  <h4><a v-link={path:'/question/'+item.question_id}>{{item.title}}</a></h4>
+                  <h4><a v-link="{path:'/question/'+item.question_id}">{{item.title}}</a></h4>
                   <span class="badge" data-badge="{{item.answer_count}}">
                     Answers
                   </span>
