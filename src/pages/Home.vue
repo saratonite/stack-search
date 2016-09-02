@@ -67,7 +67,7 @@ import SearchResults from  './../components/SearchResults';
         if(typeof(searchParams) === "undefined"){
           searchParams = {q:self.searchParams.q,closed:self.searchParams.closed,sortBy:self.searchParams.sortBy,site: 'stackoverflow'};
         }
-        
+
         Api.search(searchParams).end(function(err,res){
           self.loading =false;
           if(res.status == 200)

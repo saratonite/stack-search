@@ -9,6 +9,7 @@ var BaseCss = require('spectre.css');
 /* Import custom components */
 
 import Home from './pages/Home'
+import Question from './pages/Question'
 import NotFound from './pages/404'
 
 
@@ -18,6 +19,9 @@ var router = new VueRouter();
 router.map({
     '/': {
         component: Home
+    },
+    '/question/:qid':{
+      component:Question
     },
     '*':{
 
