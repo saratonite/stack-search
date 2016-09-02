@@ -18,7 +18,13 @@ export default {
       /* TODO: Implement View Question page with answers */
        // https://api.stackexchange.com/2.1/questions/39285602?order=desc&sort=activity&site=stackoverflow&filter=withbody
        console.log(qid);
-       return request.get(API_END+'questions/'+qid+'/answers').query({filter:'withbody',site:'stackoverflow',sort:'activity',key:API_KEY,order:'desc'})
+       return request.get(API_END+'questions/'+qid).query({filter:'withbody',site:'stackoverflow',sort:'activity',key:API_KEY,order:'desc'})
+    },
+
+    readsAnswers:function(qid){
+
+      return request.get(API_END+'questions/'+qid+'/answers').query({filter:'withbody',site:'stackoverflow',sort:'activity',key:API_KEY,order:'desc'})
+
     }
 
 

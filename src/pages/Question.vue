@@ -7,7 +7,9 @@
       {{{qData.body | json}}}
     </p>
 
-    <div class="" v-for="thread in qData">
+    <h4 v-if="answers.length">Answers ({{answers.length}})</h4>
+
+    <div class="" v-for="thread in answers">
 
 
       <div class="card">
@@ -55,17 +57,25 @@ import Api from './../service/So';
   export default {
 
     data:function(){
-      return {qid:null,qData:{}};
+      return {qid:null,qData:null,answers:null};
     },
     ready:function(){
       var self = this;
       var params = this.$route.params;
       this.qid = params.qid;
 
-      Api.readQuestion(params.qid).end(
+      Api.readQuestion(params.qid).end(function(err,resp){
+        console.info("Read Questions");
+
+
+        self.qData = resp.body.items[0];
+
+      });
+
+      Api.readsAnswers(params.qid).end(
         function(err,resp){
           //console.log(resp.body);
-          self.qData = resp.body.items;
+          self.answers = resp.body.items;
         //  console.log(self.qData);
         }
 
