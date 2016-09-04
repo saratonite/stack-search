@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router';
 
+import Vuex from 'vuex';
+
+
+
 
 
 /* Base css */
@@ -13,7 +17,15 @@ import Question from './pages/Question'
 import NotFound from './pages/404'
 
 
+
+
 Vue.use(VueRouter)
+
+
+/* Import store */
+
+import store from './store';
+
 var router = new VueRouter();
 
 router.map({
@@ -32,6 +44,7 @@ router.map({
 
 
 var app =  Vue.extend({
+  store:store
 });
 
 router.start(app,'#app')

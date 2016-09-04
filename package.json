@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A Vue.js project",
   "author": "Sarath <sarath.hacks@gmail.com>",
-  "homepage":"http://saratonite.github.io/stack-search",
+  "homepage": "http://saratonite.github.io/stack-search",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
@@ -15,7 +15,8 @@
     "spectre.css": "^0.1.24",
     "superagent": "^2.0.0",
     "vue": "^1.0.21",
-    "vue-router": "^0.7.13"
+    "vue-router": "^0.7.13",
+    "vuex": "^1.0.0-rc.2"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
