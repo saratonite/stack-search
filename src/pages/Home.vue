@@ -50,8 +50,7 @@ import {search} from './../vuex/actions';
           sortBy:'activity',
           q:'',
           site: 'stackoverflow'
-        },
-        loading:false
+        }
       }
     },
     events:{
@@ -65,6 +64,9 @@ import {search} from './../vuex/actions';
 
         threads:function(state){
           return state.threads;
+        },
+        loading:function(state){
+          return state.pageLoad;
         }
 
       },
