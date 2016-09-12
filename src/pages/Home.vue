@@ -2,6 +2,7 @@
   <div class="jumbo">
 
     <h1 >StackOverFlow Search</h1>
+
     <div class="container ">
         <!-- SearchBox -->
         <Search-box ></Search-box>
@@ -55,7 +56,7 @@ import {search} from './../vuex/actions';
     },
     events:{
       'do-search':function(data){
-        this.doSearch(data);
+        this.search(data);
       }
     },
     vuex:{
