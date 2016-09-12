@@ -1,17 +1,16 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 Vue.use(Vuex);
-
 const state = {
   appname:"Stack-Search",
-  threds:[],
+  threads:[],
   answers:[]
 }
 
 
 const mutations = {
-  FETCH_THREADS (state,threds) {
-    state.threds = threds
+  FETCH_THREADS (state,threads) {
+    state.threads = threads
   },
   RENAMEAPP (state,data){
 

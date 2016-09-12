@@ -6,7 +6,7 @@
         <!-- SearchBox -->
         <Search-box ></Search-box>
 
-        <Search-results  :loading="loading" :items="searchData"></Search-results>
+        <Search-results  :loading="loading" :items="threads"></Search-results>
 
 
     </div>
@@ -14,6 +14,7 @@
     <!-- Search Results -->
 
     <!-- End Search Results  -->
+
 
   </div>
 </template>
@@ -28,6 +29,8 @@ import Api from './../service/So';
 import SearchBox from './../components/SearchBox';
 import SearchResults from  './../components/SearchResults';
 
+import {search} from './../vuex/actions';
+
 	export default {
     created(){
 
@@ -35,7 +38,8 @@ import SearchResults from  './../components/SearchResults';
 
     },
 		ready(){
-      this.doSearch();
+      var self = this;
+      this.search({q:self.searchParams.q,closed:self.searchParams.closed,sortBy:self.searchParams.sortBy,site: 'stackoverflow'});
 		},
     data:function(){
       return {
@@ -54,8 +58,24 @@ import SearchResults from  './../components/SearchResults';
         this.doSearch(data);
       }
     },
+    vuex:{
+
+      getters:{
+
+        threads:function(state){
+          return state.threads;
+        }
+
+      },
+      actions:{
+        search
+      }
+
+    },
     // Methods
     methods:{
+
+
 
       doSearch:function(data){
         var searchParams = data;
@@ -67,14 +87,6 @@ import SearchResults from  './../components/SearchResults';
         if(typeof(searchParams) === "undefined"){
           searchParams = {q:self.searchParams.q,closed:self.searchParams.closed,sortBy:self.searchParams.sortBy,site: 'stackoverflow'};
         }
-
-        Api.search(searchParams).end(function(err,res){
-          self.loading =false;
-          if(res.status == 200)
-          {
-            self.searchData = res.body.items;
-          }
-        });
         if(typeof(e) != "undefined"){
           e.preventDefault();
         }

@@ -24,7 +24,7 @@ Vue.use(VueRouter)
 
 /* Import store */
 
-import store from './store';
+import store from './vuex/store';
 
 var router = new VueRouter();
 
@@ -36,9 +36,7 @@ router.map({
       component:Question
     },
     '*':{
-
       component:NotFound
-
     }
 })
 
