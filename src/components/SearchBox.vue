@@ -32,7 +32,7 @@
 </template>
 
 <script>
-
+import {search} from './../vuex/actions';
 export default {
 	data:function(){
 		return {
@@ -48,11 +48,16 @@ export default {
 
 		doSearch:function(e){
 			var self = this;
-			this.$dispatch('do-search',{q:self.searchData.q,closed:self.searchData.closed,sortBy:self.searchData.sortBy,site: 'stackoverflow'});
+			this.search({q:self.searchData.q,closed:self.searchData.closed,sortBy:self.searchData.sortBy,site: 'stackoverflow'});
 			e.preventDefault();
-			
+
 		}
 
+	},
+	vuex:{
+		actions:{
+			search
+		}
 	}
 
 }
