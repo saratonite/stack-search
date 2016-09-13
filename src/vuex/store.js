@@ -5,7 +5,7 @@ const state = {
   appname:"Stack-Search",
   threads:[],
   answers:[],
-  threadData:[],
+  threadData:{info:{title:''},answers:[]},
   pageLoad:false
 }
 

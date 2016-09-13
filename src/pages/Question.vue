@@ -1,15 +1,16 @@
 <template>
   <div class="jumbo">
 
+  <div v-if="thread">
     <h1 >StackOverFlow Search</h1>
     <h3>{{thread.info.title}}</h3>
-    <p>
-      {{{qData.body | json}}}
-    </p>
 
     <h4 v-if="thread.answers.length">Answers ({{thread.answers.length}})</h4>
+  </div>
 
-    <div class="" v-for="lThread in thread.answers">
+
+
+    <div v-if="thread.answers" class="" v-for="lThread in thread.answers">
 
 
       <div class="card">
