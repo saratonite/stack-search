@@ -16,6 +16,8 @@ export const  search = function(store,searchParams){
 
 export const ftechThread = function(store,threadId){
 
+  store.dispatch('CLEAN_THREAD');
+
   var threadObj = {id:threadId,info:null,answers:[]};
 
   Api.readQuestion(threadId).end(function(err,resp){

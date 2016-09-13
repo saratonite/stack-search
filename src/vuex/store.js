@@ -27,6 +27,9 @@ const mutations = {
   },
   FETCH_THREAD (state,data){
     state.threadData = data;
+  },
+  CLEAN_THREAD (state){
+    state.threadData = null;
   }
 }
 

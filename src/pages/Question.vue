@@ -76,6 +76,9 @@ import {ftechThread} from '../vuex/actions';
 
           return state.threadData;
 
+        },
+        loading:function(state){
+          return state.pageLoad;
         }
 
       },
