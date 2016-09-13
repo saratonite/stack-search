@@ -35,8 +35,6 @@ import {search} from './../vuex/actions';
 	export default {
     created(){
 
-
-
     },
 		ready(){
       var self = this;
@@ -77,25 +75,6 @@ import {search} from './../vuex/actions';
     },
     // Methods
     methods:{
-
-
-
-      doSearch:function(data){
-        var searchParams = data;
-        this.loading = true;
-
-        var self = this;
-        //var searchParams = { q:self.q,site: 'stackoverflow', order: 'desc',sort:self.sortBy,filter:'default',closed:self.closed};
-
-        if(typeof(searchParams) === "undefined"){
-          searchParams = {q:self.searchParams.q,closed:self.searchParams.closed,sortBy:self.searchParams.sortBy,site: 'stackoverflow'};
-        }
-        if(typeof(e) != "undefined"){
-          e.preventDefault();
-        }
-
-
-      }
 
     },
     components:{

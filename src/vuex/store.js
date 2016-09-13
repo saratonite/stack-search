@@ -5,6 +5,7 @@ const state = {
   appname:"Stack-Search",
   threads:[],
   answers:[],
+  threadData:[],
   pageLoad:false
 }
 
@@ -23,6 +24,9 @@ const mutations = {
 
     alert('Hello '+data);
     state.appname = data;
+  },
+  FETCH_THREAD (state,data){
+    state.threadData = data;
   }
 }
 
